@@ -66,6 +66,7 @@ p{
 
 nav{
     display: flex;
+    height: 70px;
     z-index: 9;   
 }
 
@@ -106,6 +107,8 @@ section{
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-top: 20px;
+    scroll-margin-top: 70px;
 }
 
 /*INICIO*/
@@ -539,6 +542,13 @@ section:last-of-type{
     
         .h2 {
             font-size: 2.2em;
+        }
+        
+        section {
+            padding-top: 0;
+        }
+        .title{
+            align-items: center;
         }
 
         section div{
