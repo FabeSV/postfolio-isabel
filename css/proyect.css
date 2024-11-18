@@ -190,6 +190,10 @@ section div{
     line-height: 4em;
 }
 
+.jcontent.cms{
+    margin-bottom: 200px;
+}
+
 /*INFO*/
 
 .info-section{
