@@ -118,7 +118,7 @@ section:first-of-type{
     flex-direction: row;
 }
 
-section:first-of-type img{
+.img{
     width: 22%;
 }
 
@@ -547,6 +547,9 @@ section:last-of-type{
 }
 
 @media screen and (max-width:800px){
+    .img{
+        width: 50%;
+    }
 
     section:first-of-type {
         flex-direction: column;
@@ -560,7 +563,7 @@ section:last-of-type{
     }
     .h2 {
         font-size: 2em;
-        padding: 45px 0 0 0;
+        padding: 0;
     }
 
     nav{
@@ -686,6 +689,7 @@ section:last-of-type{
 
     .gallery {
         grid-template-columns: repeat(2, auto);
+         max-width: 100%;
     }
 
     .mask p{
