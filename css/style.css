@@ -110,6 +110,10 @@ section{
 
 /*INICIO*/
 
+.inicio{
+    justify-content: space-evenly;
+}
+
 section:first-of-type{
     flex-direction: row;
 }
@@ -117,6 +121,15 @@ section:first-of-type{
 section:first-of-type img{
     width: 22%;
 }
+
+.initial-txt{
+ flex-direction: column;
+ width: 40%;
+}
+
+.initial-txt p{
+  text-align: center;
+   }
 
 .h2{
     font-size: 4em;
@@ -616,6 +629,15 @@ section:last-of-type{
      .open span:hover{
         background-color: #DB0D66;
         transform: scale(1.2);
+     }
+
+     .initial-txt {
+        flex-direction: column;
+        width: 80%;
+     }
+
+     .initial-txt p{
+        margin-top: 20px;
      }
 
      section div{

@@ -66,31 +66,62 @@ sectionsLeft.forEach(section => {
 });
 
 
-// Selecciona todas las imágenes de la clase .slide
-const slides = document.querySelectorAll(".slide");
-let indiceImg = 0; // Índice de la imagen inicial
 
-// Función para mostrar la imagen actual
-function mostrarImagen() {
-    slides.forEach((slide, index) => {
-        slide.classList.remove("active"); // Oculta todas las imágenes
-        if (index === indiceImg) {
-            slide.classList.add("active"); // Muestra solo la imagen actual
-        }
+// Selecciona todos los enlaces dentro de la clase '.gallery' (las miniaturas de la galería)
+const miniaturas = document.querySelectorAll(".gallery a");
+
+// Selecciona el contenedor del modal donde se mostrará la imagen ampliada
+const modal = document.querySelector(".modal");
+
+// Selecciona la imagen dentro del modal
+const imgModal = document.querySelector(".modal img");
+
+// Selecciona los botones dentro del modal que funcionan como flechas de navegación
+const flechas = document.querySelectorAll(".modal button");
+
+// Inicializa una variable para llevar el índice de la imagen que se está mostrando en el modal
+let indiceImg = 0;
+
+// Añade un evento de clic a cada miniatura de la galería
+miniaturas.forEach((miniatura, i) => {
+    miniatura.addEventListener("click", evento => {
+        // Evita que el enlace redirija la página al hacer clic
+        evento.preventDefault();
+        
+        // Establece el índice actual de la imagen a la posición de la miniatura seleccionada
+        indiceImg = i;
+        
+        // Cambia la imagen en el modal usando la URL del atributo 'href' de la miniatura seleccionada
+        imgModal.setAttribute("src", miniatura.getAttribute("href"));
+        
+        // Añade la clase 'visible' al modal para mostrarlo en la pantalla
+        modal.classList.add("visible");
     });
-}
-
-// Botón "anterior"
-document.getElementById("anterior").addEventListener("click", () => {
-    indiceImg = (indiceImg > 0) ? indiceImg - 1 : slides.length - 1;
-    mostrarImagen();
 });
 
-// Botón "siguiente"
-document.getElementById("siguiente").addEventListener("click", () => {
-    indiceImg = (indiceImg < slides.length - 1) ? indiceImg + 1 : 0;
-    mostrarImagen();
+// Añade un evento de clic al modal para cerrarlo al hacer clic fuera de la imagen o en el fondo del modal
+modal.addEventListener("click", () => {
+    modal.classList.remove("visible"); // Quita la clase 'visible' para ocultar el modal
 });
 
-// Inicializa la primera imagen al cargar la página
-mostrarImagen();
+// Añade eventos de clic a las flechas de navegación dentro del modal
+flechas.forEach((flecha, i) => {
+    flecha.addEventListener("click", evento => {
+        // Detiene la propagación para evitar que el clic cierre el modal
+        evento.stopPropagation();
+
+        // Si el botón es el primero (índice 0), retrocede a la imagen anterior
+        if (i == 0) {
+            indiceImg = indiceImg > 0 ? indiceImg - 1 : miniaturas.length - 1;
+        } else { 
+            // Si es el segundo botón (índice 1), avanza a la imagen siguiente
+            indiceImg = indiceImg < miniaturas.length - 1 ? indiceImg + 1 : 0;
+        }
+
+        // Cambia la imagen en el modal a la nueva imagen calculada por el índice
+        imgModal.setAttribute("src", miniaturas[indiceImg].getAttribute("href"));
+        
+        // Muestra en consola el índice actual de la imagen
+        console.log(indiceImg);
+    });
+});
