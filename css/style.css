@@ -542,6 +542,7 @@ backdrop-filter: blur(20px);
     background-color: #DB0D66;
 
 }
+
 section:last-of-type{
     justify-content: flex-start;
 }
