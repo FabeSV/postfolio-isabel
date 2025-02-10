@@ -35,6 +35,40 @@ for (let i = 0; i < botones.length; i++) {
 }
 
 
+// Slider sistema 
+
+document.addEventListener("DOMContentLoaded", function () {
+    let slides = document.querySelectorAll(".slide");
+    let currentIndex = 0;
+    let prevButton = document.getElementById("anterior");
+    let nextButton = document.getElementById("siguiente");
+
+    // Función para mostrar la imagen actual
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active"); // Quita la clase 'active' de todas
+            if (i === index) {
+                slide.classList.add("active"); // Añade 'active' solo a la imagen actual
+            }
+        });
+    }
+
+    // Botón siguiente
+    nextButton.addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % slides.length; // Cicla entre imágenes
+        showSlide(currentIndex);
+    });
+
+    // Botón anterior
+    prevButton.addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Cicla hacia atrás
+        showSlide(currentIndex);
+    });
+
+    // Mostrar la primera imagen al cargar
+    showSlide(currentIndex);
+});
+
 
 // Selecciona todos los elementos con la clase '.section-left' y los guarda en 'sectionsLeft'
 const sectionsLeft = document.querySelectorAll(".section-left");
@@ -125,3 +159,5 @@ flechas.forEach((flecha, i) => {
         console.log(indiceImg);
     });
 });
+
+
