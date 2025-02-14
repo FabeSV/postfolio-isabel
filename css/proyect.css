@@ -588,5 +588,9 @@ section:last-of-type{
             font-size: 1em;
             line-height: 1.2em;
         }
+        .create{
+            width: 80%;
+            padding: 30px 0;
+        }
     }
     
