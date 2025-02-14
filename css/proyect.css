@@ -401,8 +401,7 @@ section:last-of-type{
     padding: 60px 0;
     backdrop-filter: blur(20px);
     text-align: center;
-    font-size: 0.8em;
-   
+    font-size: 0.8em;  
 }
 
 @media screen and (max-width:800px){
