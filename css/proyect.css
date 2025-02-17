@@ -526,6 +526,7 @@ section:last-of-type{
     .create {
         width: 80%;
         padding: 30px 0;
+        text-align: center;
     }
 
 }
